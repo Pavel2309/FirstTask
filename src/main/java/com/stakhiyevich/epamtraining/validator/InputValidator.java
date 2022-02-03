@@ -1,0 +1,5 @@
+package com.stakhiyevich.epamtraining.validator;
+
+public interface InputValidator {
+    boolean isValid(String input);
+}
