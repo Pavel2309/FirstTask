@@ -10,14 +10,11 @@ public class ArraySortServiceImpl implements ArraySortService {
     public void heapSort(ArrayEntity arrayEntity) {
         int arrayLength = arrayEntity.getArrayLength();
 
-        // Build heap (rearrange array)
         for (int i = arrayLength / 2 - 1; i >= 0; i--)
             heapify(arrayEntity, arrayLength, i);
 
-        // One by one extract an element from heap
         for (int i = arrayLength - 1; i >= 0; i--) {
             try {
-                // Move current root to end
                 int temp = arrayEntity.getElement(0);
                 arrayEntity.setElement(0, arrayEntity.getElement(i));
                 arrayEntity.setElement(i, temp);
@@ -25,7 +22,6 @@ public class ArraySortServiceImpl implements ArraySortService {
                 e.getStackTrace();
             }
 
-            // call max heapify on the reduced heap
             heapify(arrayEntity, i, 0);
         }
     }
@@ -77,26 +73,22 @@ public class ArraySortServiceImpl implements ArraySortService {
     }
 
     void heapify(ArrayEntity array, int n, int i) {
-        int largest = i;  // Initialize largest as root
-        int left = 2 * i + 1;  // left = 2*i + 1
-        int right = 2 * i + 2;  // right = 2*i + 2
+        int largest = i;
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
 
         try {
-            // If left child is larger than root
             if (left < n && array.getElement(left) > array.getElement(largest))
                 largest = left;
 
-            // If right child is larger than largest so far
             if (right < n && array.getElement(right) > array.getElement(largest))
                 largest = right;
 
-            // If largest is not root
             if (largest != i) {
                 int swap = array.getElement(i);
                 array.setElement(i, array.getElement(largest));
                 array.setElement(largest, swap);
 
-                // Recursively heapify the affected sub-tree
                 heapify(array, n, largest);
             }
         } catch (ArrayException e) {

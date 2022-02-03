@@ -32,7 +32,6 @@ public class ArrayReaderImpl implements ArrayReader {
         }
 
         String resultString = null;
-
         try (Stream<String> stream = Files.lines(Paths.get(resource.getPath()))) {
             InputValidator validator = new ArrayElementValidator();
             resultString = stream
@@ -40,7 +39,8 @@ public class ArrayReaderImpl implements ArrayReader {
                     .collect(Collectors.joining(SEMICOLON_SPLITTER));
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("can't read {}", filePath, e);
+            throw new ReadException("can't read " + filePath, e);
         }
         return resultString;
     }

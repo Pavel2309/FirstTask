@@ -4,6 +4,7 @@ import com.stakhiyevich.epamtraining.entity.ArrayEntity;
 import com.stakhiyevich.epamtraining.exception.ArrayException;
 import com.stakhiyevich.epamtraining.exception.ParseException;
 import com.stakhiyevich.epamtraining.exception.ReadException;
+import com.stakhiyevich.epamtraining.factory.ArrayFactory;
 import com.stakhiyevich.epamtraining.parser.ArrayParser;
 import com.stakhiyevich.epamtraining.parser.impl.ArrayParserImpl;
 import com.stakhiyevich.epamtraining.reader.ArrayReader;
@@ -20,7 +21,7 @@ public class main {
     public static void main(String[] args) throws ArrayException {
 
         ArrayReader reader = new ArrayReaderImpl();
-        ArrayEntity array = new ArrayEntity();
+        ArrayEntity array = ArrayFactory.createArray();
         ArrayParser parser = new ArrayParserImpl();
         ArrayService service = new ArrayServiceImpl();
 

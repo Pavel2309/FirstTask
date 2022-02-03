@@ -3,6 +3,7 @@ package com.stakhiyevich.epamtraining.parser.impl;
 import com.stakhiyevich.epamtraining.entity.ArrayEntity;
 import com.stakhiyevich.epamtraining.exception.ArrayException;
 import com.stakhiyevich.epamtraining.exception.ParseException;
+import com.stakhiyevich.epamtraining.factory.ArrayFactory;
 import com.stakhiyevich.epamtraining.parser.ArrayParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,17 +23,16 @@ public class ArrayParserImpl implements ArrayParser {
                 .replaceAll(SEMICOLON_DUPLICATES, SEMICOLON_SPLITTER)
                 .split(SEMICOLON_SPLITTER);
 
-        ArrayEntity arrayEntity = new ArrayEntity(splintedString.length);
+        //ArrayEntity arrayEntity = new ArrayEntity(splintedString.length);
+        ArrayEntity arrayEntity = ArrayFactory.createArray(splintedString.length);
 
         for (int i = 0; i < splintedString.length; i++) {
             try {
                 arrayEntity.setElement(i, Integer.parseInt(splintedString[i]));
             } catch (ArrayException e) {
-                logger.error("index is out of bounds");
-                e.getStackTrace();
+                logger.error("index is out of bounds", e);
             } catch (NumberFormatException e) {
-                logger.error("out of integer min max");
-                e.getStackTrace();
+                logger.error("out of integer's min max", e);
             }
         }
 
