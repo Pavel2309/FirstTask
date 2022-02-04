@@ -31,7 +31,7 @@ public class ArrayReaderImpl implements ArrayReader {
             throw new ReadException("file " + filePath + " does not exist");
         }
 
-        String resultString = null;
+        String resultString;
         try (Stream<String> stream = Files.lines(Paths.get(resource.getPath()))) {
             InputValidator validator = new ArrayElementValidator();
             resultString = stream

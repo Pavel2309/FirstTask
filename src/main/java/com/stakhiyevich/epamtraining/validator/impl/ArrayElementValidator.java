@@ -9,7 +9,6 @@ public class ArrayElementValidator implements InputValidator {
 
     private static final String NUMBER_PATTERN = "^[0-9;-]+$";
 
-    // validator shouldn't trow any exceptions
     @Override
     public boolean isValid(String input) {
 

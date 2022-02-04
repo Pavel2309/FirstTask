@@ -41,9 +41,7 @@ public class ArrayEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ArrayEntity)) return false;
-
-        ArrayEntity that = (ArrayEntity) o;
+        if (!(o instanceof ArrayEntity that)) return false;
 
         return Arrays.equals(getArray(), that.getArray());
     }

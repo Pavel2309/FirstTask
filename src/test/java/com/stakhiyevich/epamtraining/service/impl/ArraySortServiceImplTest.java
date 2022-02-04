@@ -1,13 +1,10 @@
 package com.stakhiyevich.epamtraining.service.impl;
 
 import com.stakhiyevich.epamtraining.entity.ArrayEntity;
-import com.stakhiyevich.epamtraining.service.ArrayService;
 import com.stakhiyevich.epamtraining.service.ArraySortService;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import static org.testng.Assert.*;
 
 public class ArraySortServiceImplTest {
 

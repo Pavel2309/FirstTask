@@ -1,19 +1,10 @@
 package com.stakhiyevich.epamtraining.service.impl;
 
 import com.stakhiyevich.epamtraining.entity.ArrayEntity;
-import com.stakhiyevich.epamtraining.factory.ArrayFactory;
-import com.stakhiyevich.epamtraining.parser.ArrayParser;
-import com.stakhiyevich.epamtraining.parser.impl.ArrayParserImpl;
-import com.stakhiyevich.epamtraining.reader.ArrayReader;
-import com.stakhiyevich.epamtraining.reader.impl.ArrayReaderImpl;
 import com.stakhiyevich.epamtraining.service.ArrayService;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.util.Optional;
-
-import static org.testng.Assert.*;
 
 public class ArrayServiceImplTest {
 

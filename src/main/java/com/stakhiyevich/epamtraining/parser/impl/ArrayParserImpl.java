@@ -12,7 +12,7 @@ public class ArrayParserImpl implements ArrayParser {
 
     private static final Logger logger = LogManager.getLogger();
     private static final String SEMICOLON_SPLITTER = ";";
-    private static final String SEMICOLON_DUPLICATES = "[;]{1,}";
+    private static final String SEMICOLON_DUPLICATES = "[;]+";
 
     @Override
     public ArrayEntity parseValue(String value) throws ParseException {

@@ -2,17 +2,13 @@ package com.stakhiyevich.epamtraining.parser.impl;
 
 import com.stakhiyevich.epamtraining.entity.ArrayEntity;
 import com.stakhiyevich.epamtraining.exception.ParseException;
-import com.stakhiyevich.epamtraining.exception.ReadException;
-import com.stakhiyevich.epamtraining.factory.ArrayFactory;
 import com.stakhiyevich.epamtraining.parser.ArrayParser;
-import com.stakhiyevich.epamtraining.reader.ArrayReader;
-import com.stakhiyevich.epamtraining.reader.impl.ArrayReaderImpl;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
-import static org.testng.Assert.assertThrows;
+import static org.testng.Assert.fail;
+
 
 public class ArrayParserImplTest {
 
