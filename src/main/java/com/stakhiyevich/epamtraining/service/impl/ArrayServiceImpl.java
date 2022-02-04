@@ -16,15 +16,18 @@ public class ArrayServiceImpl implements ArrayService {
     public int getMinElement(ArrayEntity arrayEntity) {
         int minElement = 0;
         logger.info("trying to find min element");
-        for (int i = 0; i < arrayEntity.getArrayLength(); i++) {
-            try {
+
+        try {
+            minElement = arrayEntity.getElement(0);
+            for (int i = 0; i < arrayEntity.getArrayLength(); i++) {
                 if (arrayEntity.getElement(i) < minElement) {
                     minElement = arrayEntity.getElement(i);
                 }
-            } catch (ArrayException e) {
-                logger.error("can't find min element", e);
             }
+        } catch (ArrayException e) {
+            logger.error("can't find min element", e);
         }
+
         return minElement;
     }
 
@@ -32,15 +35,18 @@ public class ArrayServiceImpl implements ArrayService {
     public int getMaxElement(ArrayEntity arrayEntity) {
         int maxElement = 0;
         logger.info("trying to find max element");
-        for (int i = 0; i < arrayEntity.getArrayLength(); i++) {
-            try {
+
+        try {
+            maxElement = arrayEntity.getElement(0);
+            for (int i = 0; i < arrayEntity.getArrayLength(); i++) {
                 if (arrayEntity.getElement(i) > maxElement) {
                     maxElement = arrayEntity.getElement(i);
                 }
-            } catch (ArrayException e) {
-                logger.error("can't find max element", e);
             }
+        } catch (ArrayException e) {
+            logger.error("can't find max element", e);
         }
+
         return maxElement;
     }
 
@@ -80,7 +86,7 @@ public class ArrayServiceImpl implements ArrayService {
     @Override
     public int getAverageValue(ArrayEntity arrayEntity) {
         logger.info("trying to get the average value");
-        return getSumValue(arrayEntity) / arrayEntity.getArrayLength();
+        return (getSumValue(arrayEntity) / arrayEntity.getArrayLength());
     }
 
     @Override

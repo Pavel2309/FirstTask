@@ -23,7 +23,6 @@ public class ArrayParserImpl implements ArrayParser {
                 .replaceAll(SEMICOLON_DUPLICATES, SEMICOLON_SPLITTER)
                 .split(SEMICOLON_SPLITTER);
 
-        //ArrayEntity arrayEntity = new ArrayEntity(splintedString.length);
         ArrayEntity arrayEntity = ArrayFactory.createArray(splintedString.length);
 
         for (int i = 0; i < splintedString.length; i++) {
@@ -31,8 +30,10 @@ public class ArrayParserImpl implements ArrayParser {
                 arrayEntity.setElement(i, Integer.parseInt(splintedString[i]));
             } catch (ArrayException e) {
                 logger.error("index is out of bounds", e);
+                throw new  ParseException("can't parse file");
             } catch (NumberFormatException e) {
-                logger.error("out of integer's min max", e);
+                logger.error("illegal character or out of integer's min max value", e);
+                throw new  ParseException("can't parse file");
             }
         }
 
