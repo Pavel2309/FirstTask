@@ -32,14 +32,15 @@ public class ArrayParserImplTest {
         try {
             actual = arrayParser.parseValue(CORRECT_VALUE);
         } catch (ParseException e) {
-            fail("can't parse file");
+            fail("can't parse the file");
         }
 
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void testParseValueException() {
-        assertThrows(ParseException.class, () -> arrayParser.parseValue(WRONG_VALUE));
+    @Test(expectedExceptions = ParseException.class)
+    public void testParseValueException() throws ParseException {
+        arrayParser.parseValue(WRONG_VALUE);
     }
+
 }

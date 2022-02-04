@@ -31,8 +31,9 @@ public class ArrayReaderImplTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test
-    public void testReadFileException() {
-        assertThrows(ReadException.class, () -> arrayReader.readFile(WRONG_PATH));
+    @Test(expectedExceptions = ReadException.class)
+    public void testReadFileException() throws ReadException {
+        arrayReader.readFile(WRONG_PATH);
     }
+
 }
