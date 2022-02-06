@@ -11,10 +11,8 @@ public class ArrayElementValidator implements InputValidator {
 
     @Override
     public boolean isValid(String input) {
-
         Pattern pattern = Pattern.compile(NUMBER_PATTERN);
         Matcher matcher = pattern.matcher(input);
-
         return matcher.matches();
     }
 

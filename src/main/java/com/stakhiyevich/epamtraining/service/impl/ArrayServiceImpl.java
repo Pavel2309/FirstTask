@@ -13,7 +13,7 @@ public class ArrayServiceImpl implements ArrayService {
     private static final Logger logger = LogManager.getLogger();
 
     @Override
-    public int getMinElement(ArrayEntity arrayEntity) {
+    public int findMinElement(ArrayEntity arrayEntity) {
         int minElement = 0;
         logger.info("trying to find min element");
 
@@ -32,7 +32,7 @@ public class ArrayServiceImpl implements ArrayService {
     }
 
     @Override
-    public int getMaxElement(ArrayEntity arrayEntity) {
+    public int findMaxElement(ArrayEntity arrayEntity) {
         int maxElement = 0;
         logger.info("trying to find max element");
 
@@ -84,13 +84,13 @@ public class ArrayServiceImpl implements ArrayService {
     }
 
     @Override
-    public int getAverageValue(ArrayEntity arrayEntity) {
+    public int calculateAverageValue(ArrayEntity arrayEntity) {
         logger.info("trying to get the average value");
-        return (getSumValue(arrayEntity) / arrayEntity.getArrayLength());
+        return (calculateSumValue(arrayEntity) / arrayEntity.getArrayLength());
     }
 
     @Override
-    public int getSumValue(ArrayEntity arrayEntity) {
+    public int calculateSumValue(ArrayEntity arrayEntity) {
         int sum = 0;
         logger.info("trying to get the sum value");
         for (int i = 0; i < arrayEntity.getArrayLength(); i++) {

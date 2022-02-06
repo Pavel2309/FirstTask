@@ -15,7 +15,7 @@ public class ArrayIntStreamServiceImpl implements ArrayIntStreamService {
     private static final Logger logger = LogManager.getLogger();
 
     @Override
-    public OptionalInt getMinElement(ArrayEntity arrayEntity) {
+    public OptionalInt findMinElement(ArrayEntity arrayEntity) {
 
         logger.info("trying to find min element");
 
@@ -30,7 +30,7 @@ public class ArrayIntStreamServiceImpl implements ArrayIntStreamService {
     }
 
     @Override
-    public OptionalInt getMaxElement(ArrayEntity arrayEntity) {
+    public OptionalInt findMaxElement(ArrayEntity arrayEntity) {
 
         logger.info("trying to find max element");
 
@@ -65,7 +65,7 @@ public class ArrayIntStreamServiceImpl implements ArrayIntStreamService {
     }
 
     @Override
-    public OptionalInt getAverageValue(ArrayEntity arrayEntity) {
+    public OptionalInt calculateAverageValue(ArrayEntity arrayEntity) {
         logger.info("trying to get the average value");
         try {
             double average = IntStream.of(arrayEntity.getArray()).average().orElseThrow(ArrayException::new);
@@ -77,7 +77,7 @@ public class ArrayIntStreamServiceImpl implements ArrayIntStreamService {
     }
 
     @Override
-    public int getSumValue(ArrayEntity arrayEntity) {
+    public int calculateSumValue(ArrayEntity arrayEntity) {
         logger.info("trying to get the sum value");
         return IntStream.of(arrayEntity.getArray()).sum();
     }

@@ -6,17 +6,17 @@ import java.util.Optional;
 
 public interface ArrayService {
 
-    int getMinElement(ArrayEntity arrayEntity);
+    int findMinElement(ArrayEntity arrayEntity);
 
-    int getMaxElement(ArrayEntity arrayEntity);
+    int findMaxElement(ArrayEntity arrayEntity);
 
     Optional<ArrayEntity> changeAllNegativeToPositive(ArrayEntity arrayEntity);
 
     Optional<ArrayEntity> replaceOddElementsByNumber(ArrayEntity arrayEntity, int number);
 
-    int getAverageValue(ArrayEntity arrayEntity);
+    int calculateAverageValue(ArrayEntity arrayEntity);
 
-    int getSumValue(ArrayEntity arrayEntity);
+    int calculateSumValue(ArrayEntity arrayEntity);
 
     int countPositiveValues(ArrayEntity arrayEntity);
 

@@ -1,16 +1,10 @@
 package com.stakhiyevich.epamtraining.service.impl;
 
 import com.stakhiyevich.epamtraining.entity.ArrayEntity;
-import com.stakhiyevich.epamtraining.exception.ArrayException;
 import com.stakhiyevich.epamtraining.service.ArrayIntStreamService;
-import com.stakhiyevich.epamtraining.service.ArrayService;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.util.OptionalInt;
-
-import static org.testng.Assert.*;
 
 public class ArrayIntStreamServiceImplTest {
 
@@ -22,10 +16,10 @@ public class ArrayIntStreamServiceImplTest {
     }
 
     @Test
-    public void testGetMinElement() {
+    public void testFindMinElement() {
         ArrayEntity array = new ArrayEntity(5, 4, 3, 2, 1);
         int expected = 1;
-        int actual = arrayIntStreamService.getMinElement(array).getAsInt();
+        int actual = arrayIntStreamService.findMinElement(array).getAsInt();
 
 //        // ask about this approach
 //        if (arrayIntStreamService.getMinElement(array).isPresent()) {
@@ -38,10 +32,10 @@ public class ArrayIntStreamServiceImplTest {
     }
 
     @Test
-    public void testGetMaxElement() {
+    public void testFindMaxElement() {
         ArrayEntity array = new ArrayEntity(5, 4, 3, 2, 1);
         int expected = 5;
-        int actual = arrayIntStreamService.getMaxElement(array).getAsInt();
+        int actual = arrayIntStreamService.findMaxElement(array).getAsInt();
         Assert.assertEquals(expected, actual);
     }
 
@@ -62,18 +56,18 @@ public class ArrayIntStreamServiceImplTest {
     }
 
     @Test
-    public void testGetAverageValue() {
+    public void testCalculateAverageValue() {
         ArrayEntity array = new ArrayEntity(1, 2, 3, 4, 5);
         int expected = 3;
-        int actual = arrayIntStreamService.getAverageValue(array).getAsInt();
+        int actual = arrayIntStreamService.calculateAverageValue(array).getAsInt();
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void testGetSumValue() {
+    public void testCalculateSumValue() {
         ArrayEntity array = new ArrayEntity(5, 4, 3, 2, 1);
         int expected = 15;
-        int actual = arrayIntStreamService.getSumValue(array);
+        int actual = arrayIntStreamService.calculateSumValue(array);
         Assert.assertEquals(expected, actual);
     }
 

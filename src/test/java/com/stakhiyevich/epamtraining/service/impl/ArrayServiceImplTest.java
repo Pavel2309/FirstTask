@@ -16,18 +16,18 @@ public class ArrayServiceImplTest {
     }
 
     @Test
-    public void testGetMinElement() {
+    public void testFindMinElement() {
         ArrayEntity array = new ArrayEntity(5, 4, 3, 2, 1);
         int expected = 1;
-        int actual = arrayService.getMinElement(array);
+        int actual = arrayService.findMinElement(array);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void testGetMaxElement() {
+    public void testFindMaxElement() {
         ArrayEntity array = new ArrayEntity(5, 4, 3, 2, 1);
         int expected = 5;
-        int actual = arrayService.getMaxElement(array);
+        int actual = arrayService.findMaxElement(array);
         Assert.assertEquals(expected, actual);
     }
 
@@ -48,18 +48,18 @@ public class ArrayServiceImplTest {
     }
 
     @Test
-    public void testGetAverageValue() {
+    public void testCalculateAverageValue() {
         ArrayEntity array = new ArrayEntity(1, 2, 3, 4, 5);
         int expected = 3;
-        int actual = arrayService.getAverageValue(array);
+        int actual = arrayService.calculateAverageValue(array);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void testGetSumValue() {
+    public void testCalculateSumValue() {
         ArrayEntity array = new ArrayEntity(5, 4, 3, 2, 1);
         int expected = 15;
-        int actual = arrayService.getSumValue(array);
+        int actual = arrayService.calculateSumValue(array);
         Assert.assertEquals(expected, actual);
     }
 
