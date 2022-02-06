@@ -32,7 +32,8 @@ public class ArrayReaderImpl implements ArrayReader {
         }
 
         String resultString;
-        try (Stream<String> stream = Files.lines(Paths.get(resource.getPath()))) {
+        try {
+            Stream<String> stream = Files.lines(Paths.get(resource.getPath()));
             InputValidator validator = new ArrayElementValidator();
             resultString = stream
                     .filter(validator::isValid)
