@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class ArrayElementValidator implements InputValidator {
 
-    private static final String NUMBER_PATTERN = "^[0-9;-]+$";
+    private static final String NUMBER_PATTERN = "^[\\d-\\s]+$";
 
     @Override
     public boolean isValidNumber(String inputString) {

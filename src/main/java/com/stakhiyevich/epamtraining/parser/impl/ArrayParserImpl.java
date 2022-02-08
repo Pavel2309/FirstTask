@@ -11,8 +11,8 @@ import org.apache.logging.log4j.Logger;
 public class ArrayParserImpl implements ArrayParser {
 
     private static final Logger logger = LogManager.getLogger();
-    private static final String SEMICOLON_SPLITTER = ";";
-    private static final String SEMICOLON_DUPLICATES = "[;]+";
+    private static final String SPACE_SPLITTER = " ";
+    private static final String SPACE_DUPLICATES = "[ ]+";
 
     @Override
     public ArrayEntity parseValue(String value) throws ParseException {
@@ -20,8 +20,8 @@ public class ArrayParserImpl implements ArrayParser {
         logger.info("trying to parse the \"{}\" string", value);
 
         String[] splintedString = value
-                .replaceAll(SEMICOLON_DUPLICATES, SEMICOLON_SPLITTER)
-                .split(SEMICOLON_SPLITTER);
+                .replaceAll(SPACE_DUPLICATES, SPACE_SPLITTER)
+                .split(SPACE_SPLITTER);
 
         ArrayEntity arrayEntity = ArrayFactory.createArray(splintedString.length);
 

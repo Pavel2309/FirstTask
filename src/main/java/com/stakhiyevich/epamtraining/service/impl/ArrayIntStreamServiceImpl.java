@@ -55,7 +55,7 @@ public class ArrayIntStreamServiceImpl implements ArrayIntStreamService {
     public Optional<ArrayEntity> replaceOddElementsByNumber(ArrayEntity arrayEntity, int number) {
         logger.info("trying to change odd elements by {} number", number);
         int[] processedArray = IntStream.of(arrayEntity.getArray()).map(element -> {
-            if (element % 2 == 0) {
+            if (element % 2 != 0) {
                 element = number;
             }
             return element;

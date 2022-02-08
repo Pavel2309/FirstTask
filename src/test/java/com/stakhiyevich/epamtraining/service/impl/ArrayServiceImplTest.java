@@ -42,7 +42,7 @@ public class ArrayServiceImplTest {
     @Test
     public void testReplaceOddElementsByNumber() {
         ArrayEntity array = new ArrayEntity(5, 4, 3, 2, 1);
-        ArrayEntity expected = new ArrayEntity(5, 0, 3, 0, 1);
+        ArrayEntity expected = new ArrayEntity(0, 4, 0, 2, 0);
         ArrayEntity actual = arrayService.replaceOddElementsByNumber(array, 0).orElse(null);
         Assert.assertEquals(expected, actual);
     }

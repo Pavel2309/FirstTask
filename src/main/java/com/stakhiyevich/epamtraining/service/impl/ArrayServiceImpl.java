@@ -57,7 +57,7 @@ public class ArrayServiceImpl implements ArrayService {
         for (int i = 0; i < arrayEntity.getArrayLength(); i++) {
             try {
                 if (arrayEntity.getElement(i) < 0) {
-                    arrayEntity.setElement(i, Math.abs(arrayEntity.getElement(i)));
+                    array.setElement(i, Math.abs(arrayEntity.getElement(i)));
                 }
             } catch (ArrayException e) {
                 logger.error("can't change negative to positive", e);
@@ -73,8 +73,8 @@ public class ArrayServiceImpl implements ArrayService {
         logger.info("trying to change odd elements by {} number", number);
         for (int i = 0; i < arrayEntity.getArrayLength(); i++) {
             try {
-                if (arrayEntity.getElement(i) % 2 == 0) {
-                    arrayEntity.setElement(i, number);
+                if (arrayEntity.getElement(i) % 2 != 0) {
+                    array.setElement(i, number);
                 }
             } catch (ArrayException e) {
                 logger.error("can't replace odd elements by {} number", number, e);

@@ -12,8 +12,8 @@ import static org.testng.Assert.fail;
 
 public class ArrayParserImplTest {
 
-    private static final String CORRECT_VALUE = "4;8;15;16;23;42";
-    private static final String WRONG_VALUE = "4!!!;8;15;16;23;42";
+    private static final String CORRECT_VALUE = "4 8 15 16 23 42";
+    private static final String WRONG_VALUE = "4!!! 8 15 16QQQ 23 42";
     ArrayParser arrayParser;
 
     @BeforeMethod

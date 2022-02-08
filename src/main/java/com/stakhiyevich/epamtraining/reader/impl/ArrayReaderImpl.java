@@ -17,12 +17,14 @@ import java.util.stream.Stream;
 public class ArrayReaderImpl implements ArrayReader {
 
     private static final Logger logger = LogManager.getLogger();
-    private static final String SEMICOLON_SPLITTER = ";";
+    private static final String SPACE_SPLITTER = " ";
 
     @Override
     public String readFile(String filePath) throws ReadException {
 
         logger.info("trying to read the \"{}\" file", filePath);
+
+        String resultString;
 
         ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource(filePath);
@@ -31,18 +33,22 @@ public class ArrayReaderImpl implements ArrayReader {
             throw new ReadException("file " + filePath + " does not exist");
         }
 
-        String resultString;
-        try {
-            Stream<String> stream = Files.lines(Paths.get(resource.getPath()));
+        try (Stream<String> stream = Files.lines(Paths.get(resource.getPath()))) {
             InputValidator validator = new ArrayElementValidator();
             resultString = stream
                     .filter(validator::isValidNumber)
-                    .collect(Collectors.joining(SEMICOLON_SPLITTER));
+                    .collect(Collectors.joining(SPACE_SPLITTER));
 
         } catch (IOException e) {
             logger.error("can't read {}", filePath, e);
             throw new ReadException("can't read " + filePath, e);
         }
+
+        if (resultString.isEmpty()) {
+            logger.error("the file is empty or no numbers are found");
+            throw new ReadException("the file is empty or no numbers are found");
+        }
+
         return resultString;
     }
 }

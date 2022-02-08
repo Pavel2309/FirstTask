@@ -17,7 +17,7 @@ public class ArrayEntity {
     }
 
     public int[] getArray() {
-        return array;
+        return array.clone();
     }
 
     public int getArrayLength() {
