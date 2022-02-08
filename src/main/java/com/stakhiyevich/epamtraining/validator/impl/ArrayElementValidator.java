@@ -10,9 +10,9 @@ public class ArrayElementValidator implements InputValidator {
     private static final String NUMBER_PATTERN = "^[0-9;-]+$";
 
     @Override
-    public boolean isValid(String input) {
+    public boolean isValidNumber(String inputString) {
         Pattern pattern = Pattern.compile(NUMBER_PATTERN);
-        Matcher matcher = pattern.matcher(input);
+        Matcher matcher = pattern.matcher(inputString);
         return matcher.matches();
     }
 

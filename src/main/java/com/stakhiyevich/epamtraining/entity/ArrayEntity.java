@@ -53,8 +53,6 @@ public class ArrayEntity {
 
     @Override
     public String toString() {
-        return "ArrayEntity{" +
-                "array=" + Arrays.toString(array) +
-                '}';
+        return Arrays.toString(array);
     }
 }

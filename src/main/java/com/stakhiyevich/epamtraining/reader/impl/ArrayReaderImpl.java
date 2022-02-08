@@ -36,7 +36,7 @@ public class ArrayReaderImpl implements ArrayReader {
             Stream<String> stream = Files.lines(Paths.get(resource.getPath()));
             InputValidator validator = new ArrayElementValidator();
             resultString = stream
-                    .filter(validator::isValid)
+                    .filter(validator::isValidNumber)
                     .collect(Collectors.joining(SEMICOLON_SPLITTER));
 
         } catch (IOException e) {
