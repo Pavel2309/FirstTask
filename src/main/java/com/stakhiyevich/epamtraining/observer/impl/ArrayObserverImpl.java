@@ -1,7 +1,7 @@
 package com.stakhiyevich.epamtraining.observer.impl;
 
 import com.stakhiyevich.epamtraining.entity.ArrayEntity;
-import com.stakhiyevich.epamtraining.entity.ArrayStatisticsEntity;
+import com.stakhiyevich.epamtraining.entity.ArrayStatisticEntity;
 import com.stakhiyevich.epamtraining.entity.WarehouseEntity;
 import com.stakhiyevich.epamtraining.observer.ArrayObserver;
 import com.stakhiyevich.epamtraining.service.ArrayService;
@@ -20,7 +20,7 @@ public class ArrayObserverImpl implements ArrayObserver {
         int numberOfPositiveElements = arrayService.countPositiveValues(arrayEntity);
         int numberOfNegativeElements = arrayService.countNegativeValues(arrayEntity);
 
-        ArrayStatisticsEntity arrayStatistics = new ArrayStatisticsEntity(maxElement, minElement, averageElement, numberOfPositiveElements, numberOfNegativeElements);
+        ArrayStatisticEntity arrayStatistics = new ArrayStatisticEntity(maxElement, minElement, averageElement, numberOfPositiveElements, numberOfNegativeElements);
         Long arrayId = arrayEntity.getArrayId();
 
         WarehouseEntity warehouse = WarehouseEntity.getInstance();

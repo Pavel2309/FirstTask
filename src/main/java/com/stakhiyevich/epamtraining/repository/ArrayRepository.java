@@ -3,6 +3,7 @@ package com.stakhiyevich.epamtraining.repository;
 import com.stakhiyevich.epamtraining.entity.ArrayEntity;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class ArrayRepository {
@@ -38,6 +39,30 @@ public class ArrayRepository {
         return arrayEntityList.stream()
                 .filter(specification::specify)
                 .toList();
+    }
+
+    public boolean add(ArrayEntity arrayEntity) {
+        return arrayEntityList.add(arrayEntity);
+    }
+
+    public void add(int index, ArrayEntity arrayEntity) {
+        arrayEntityList.add(index, arrayEntity);
+    }
+
+    public void set(int index, ArrayEntity arrayEntity) {
+        arrayEntityList.set(index, arrayEntity);
+    }
+
+    public boolean remove(ArrayEntity arrayEntity) {
+        return arrayEntityList.remove(arrayEntity);
+    }
+
+    public ArrayEntity get(int index) {
+        return arrayEntityList.get(index);
+    }
+
+    public List<ArrayEntity> sort(Comparator<? super ArrayEntity> comparator) {
+        return arrayEntityList.stream().sorted(comparator).toList();
     }
 
 }

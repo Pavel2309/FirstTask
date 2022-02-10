@@ -50,8 +50,8 @@ public class ArrayServiceImplTest {
     @Test
     public void testCalculateAverageValue() {
         ArrayEntity array = new ArrayEntity(1, 2, 3, 4, 5);
-        int expected = 3;
-        int actual = arrayService.calculateAverageValue(array);
+        double expected = 3;
+        double actual = arrayService.calculateAverageValue(array);
         Assert.assertEquals(expected, actual);
     }
 

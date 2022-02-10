@@ -1,6 +1,6 @@
 package com.stakhiyevich.epamtraining.entity;
 
-public class ArrayStatisticsEntity {
+public class ArrayStatisticEntity {
 
     private int max;
     private int min;
@@ -8,7 +8,8 @@ public class ArrayStatisticsEntity {
     private int numberOfPositiveElements;
     private int numberOfNegativeElements;
 
-    public ArrayStatisticsEntity(int max, int min, double average, int numberOfPositiveElements, int numberOfNegativeElements) {
+    public ArrayStatisticEntity(int max, int min, double average,
+                                int numberOfPositiveElements, int numberOfNegativeElements) {
         this.max = max;
         this.min = min;
         this.average = average;
@@ -59,9 +60,9 @@ public class ArrayStatisticsEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ArrayStatisticsEntity)) return false;
+        if (!(o instanceof ArrayStatisticEntity)) return false;
 
-        ArrayStatisticsEntity that = (ArrayStatisticsEntity) o;
+        ArrayStatisticEntity that = (ArrayStatisticEntity) o;
 
         if (getMax() != that.getMax()) return false;
         if (getMin() != that.getMin()) return false;
