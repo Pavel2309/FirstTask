@@ -1,15 +1,20 @@
 package com.stakhiyevich.epamtraining.entity;
 
 import com.stakhiyevich.epamtraining.exception.ArrayException;
+import com.stakhiyevich.epamtraining.observer.ArrayObserver;
+import com.stakhiyevich.epamtraining.observer.Observable;
 
 import java.util.Arrays;
+import java.util.Set;
 
-public class ArrayEntity {
+public class ArrayEntity extends AbstractArrayEntity implements Observable {
 
     private final int[] array;
 
+    private final Set<ArrayObserver> observers = getObservers();
+
     public ArrayEntity(int... array) {
-        this.array = array;
+        this.array = array.clone();
     }
 
     public ArrayEntity(int size) {
@@ -36,6 +41,7 @@ public class ArrayEntity {
             throw new ArrayException("index " + index + "is out of bounds");
         }
         array[index] = value;
+        notifyObservers();
     }
 
     @Override
@@ -54,5 +60,30 @@ public class ArrayEntity {
     @Override
     public String toString() {
         return Arrays.toString(array);
+    }
+
+
+    @Override
+    public void attach(ArrayObserver observer) {
+        if (observer != null) {
+            observers.add(observer);
+        }
+    }
+
+    @Override
+    public void detach(ArrayObserver observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+
+        if (observers.isEmpty()) {
+            return;
+        }
+
+        for (ArrayObserver observer : observers) {
+            observer.changeElement(this);
+        }
     }
 }
