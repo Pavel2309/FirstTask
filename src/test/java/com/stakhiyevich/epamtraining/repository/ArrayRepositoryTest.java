@@ -2,7 +2,10 @@ package com.stakhiyevich.epamtraining.repository;
 
 import com.stakhiyevich.epamtraining.entity.ArrayEntity;
 import com.stakhiyevich.epamtraining.entity.comparator.ArrayComparator;
+import com.stakhiyevich.epamtraining.repository.impl.ArraySpecificationGreaterSum;
 import com.stakhiyevich.epamtraining.repository.impl.ArraySpecificationId;
+import com.stakhiyevich.epamtraining.repository.impl.ArraySpecificationLength;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -12,7 +15,7 @@ import static org.testng.Assert.*;
 
 public class ArrayRepositoryTest {
 
-    @BeforeMethod
+    @BeforeClass
     public void setUp() {
 
         ArrayEntity firstArray = new ArrayEntity(1, 3, 4, 5, 6);
@@ -34,9 +37,13 @@ public class ArrayRepositoryTest {
     public void testRemove() {
         ArrayRepository repository = ArrayRepository.getInstance();
         ArrayEntity arrayForRemoving = repository.get(2);
-        boolean actual = repository.remove(arrayForRemoving);
 
-        assertTrue(actual);
+        repository.remove(arrayForRemoving);
+
+        int actual = repository.getAll().size();
+        int expected = 4;
+
+        assertEquals(actual, expected);
     }
 
 
@@ -69,8 +76,68 @@ public class ArrayRepositoryTest {
     }
 
     @Test
+    public void testBasicQueryArraySpecificationGreaterSum() {
+
+        ArraySpecification specification = new ArraySpecificationGreaterSum(15);
+        ArrayRepository repository = ArrayRepository.getInstance();
+
+        List<ArrayEntity> arrayEntities = repository.basicQuery(specification);
+
+        int actual = arrayEntities.size();
+        int expected = 3;
+
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void testStreamQueryArraySpecificationGreaterSum() {
+
+        ArraySpecification specification = new ArraySpecificationGreaterSum(15);
+        ArrayRepository repository = ArrayRepository.getInstance();
+
+        List<ArrayEntity> arrayEntities = repository.streamQuery(specification);
+
+        int actual = arrayEntities.size();
+        int expected = 3;
+
+        assertEquals(actual, expected);
+
+    }
+
+    @Test
+    public void testBasicQueryArraySpecificationLength() {
+
+        ArraySpecification specification = new ArraySpecificationLength(6);
+        ArrayRepository repository = ArrayRepository.getInstance();
+
+        List<ArrayEntity> arrayEntities = repository.basicQuery(specification);
+
+        int actual = arrayEntities.size();
+        int expected = 1;
+
+        assertEquals(actual, expected);
+
+    }
+
+    @Test
+    public void testStreamQueryArraySpecificationLength() {
+
+        ArraySpecification specification = new ArraySpecificationLength(5);
+        ArrayRepository repository = ArrayRepository.getInstance();
+
+        List<ArrayEntity> arrayEntities = repository.streamQuery(specification);
+
+        int actual = arrayEntities.size();
+        int expected = 3;
+
+        assertEquals(actual, expected);
+
+    }
+
+    @Test
     public void testSort() {
         //todo test sort
     }
+
 
 }

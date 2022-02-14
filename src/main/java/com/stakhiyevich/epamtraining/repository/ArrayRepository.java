@@ -53,16 +53,25 @@ public class ArrayRepository {
         arrayEntityList.set(index, arrayEntity);
     }
 
-    public boolean remove(ArrayEntity arrayEntity) {
-        return arrayEntityList.remove(arrayEntity);
+    public void remove(ArrayEntity arrayEntity) {
+        arrayEntityList.remove(arrayEntity);
     }
 
     public ArrayEntity get(int index) {
         return arrayEntityList.get(index);
     }
 
-    public List<ArrayEntity> sort(Comparator<? super ArrayEntity> comparator) {
+    public List<ArrayEntity> getAll() {
+        return arrayEntityList;
+    }
+
+    public List<ArrayEntity> sortById(Comparator<? super ArrayEntity> comparator) {
         return arrayEntityList.stream().sorted(comparator).toList();
     }
+
+    public List<ArrayEntity> sortByLength() {
+        return null;
+    }
+
 
 }

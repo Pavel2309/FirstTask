@@ -11,6 +11,7 @@ public class ArrayEntity extends AbstractArrayEntity implements Observable {
 
     private final int[] array;
 
+    //ask about this
     private final Set<ArrayObserver> observers = getObservers();
 
     public ArrayEntity(int... array) {
@@ -42,6 +43,10 @@ public class ArrayEntity extends AbstractArrayEntity implements Observable {
         }
         array[index] = value;
         notifyObservers();
+    }
+
+    public int getLength() {
+        return array.length;
     }
 
     @Override
