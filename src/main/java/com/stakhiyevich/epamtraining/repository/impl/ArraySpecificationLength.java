@@ -13,6 +13,6 @@ public class ArraySpecificationLength implements ArraySpecification {
 
     @Override
     public boolean specify(ArrayEntity array) {
-        return array.getLength() == numberOfElements;
+        return array.getArrayLength() == numberOfElements;
     }
 }

@@ -65,12 +65,12 @@ public class ArrayRepository {
         return arrayEntityList;
     }
 
-    public List<ArrayEntity> sortById(Comparator<? super ArrayEntity> comparator) {
+    public List<ArrayEntity> sortById(Comparator<ArrayEntity> comparator)  {
         return arrayEntityList.stream().sorted(comparator).toList();
     }
 
-    public List<ArrayEntity> sortByLength() {
-        return null;
+    public List<ArrayEntity> sortByLength(Comparator<ArrayEntity> comparator) {
+        return arrayEntityList.stream().sorted(comparator).toList();
     }
 
 

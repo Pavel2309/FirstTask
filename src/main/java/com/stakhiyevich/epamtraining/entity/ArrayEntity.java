@@ -45,10 +45,6 @@ public class ArrayEntity extends AbstractArrayEntity implements Observable {
         notifyObservers();
     }
 
-    public int getLength() {
-        return array.length;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

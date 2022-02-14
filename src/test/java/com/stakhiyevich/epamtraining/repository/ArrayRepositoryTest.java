@@ -1,12 +1,12 @@
 package com.stakhiyevich.epamtraining.repository;
 
 import com.stakhiyevich.epamtraining.entity.ArrayEntity;
-import com.stakhiyevich.epamtraining.entity.comparator.ArrayComparator;
+import com.stakhiyevich.epamtraining.entity.comparator.ArrayComparatorId;
+import com.stakhiyevich.epamtraining.entity.comparator.ArrayComparatorLength;
 import com.stakhiyevich.epamtraining.repository.impl.ArraySpecificationGreaterSum;
 import com.stakhiyevich.epamtraining.repository.impl.ArraySpecificationId;
 import com.stakhiyevich.epamtraining.repository.impl.ArraySpecificationLength;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -32,20 +32,6 @@ public class ArrayRepositoryTest {
         repository.add(fifthArray);
 
     }
-
-    @Test
-    public void testRemove() {
-        ArrayRepository repository = ArrayRepository.getInstance();
-        ArrayEntity arrayForRemoving = repository.get(2);
-
-        repository.remove(arrayForRemoving);
-
-        int actual = repository.getAll().size();
-        int expected = 4;
-
-        assertEquals(actual, expected);
-    }
-
 
     @Test
     public void testBasicQueryArraySpecificationId() {
@@ -135,9 +121,39 @@ public class ArrayRepositoryTest {
     }
 
     @Test
-    public void testSort() {
-        //todo test sort
+    public void testSortById() {
+
+        ArrayRepository repository = ArrayRepository.getInstance();
+        repository.get(0).setArrayId(2);
+        repository.get(1).setArrayId(1);
+        List<ArrayEntity> actual = repository.sortById(new ArrayComparatorId());
+
+        ArrayEntity firstArray = new ArrayEntity(1, 3, 4, 5, 6);
+        ArrayEntity secondArray = new ArrayEntity(8, 9, 4, 7, 1);
+        ArrayEntity thirdArray = new ArrayEntity(0, 2, -4, 3, 4, 3);
+        ArrayEntity fourthArray = new ArrayEntity(3, 5, 9);
+        ArrayEntity fifthArray = new ArrayEntity(7, 1, 1, 1, 3);
+
+        List<ArrayEntity> expected = List.of(secondArray, firstArray, thirdArray, fourthArray, fifthArray);
+
+        assertEquals(actual, expected);
     }
 
+    @Test
+    public void testSortByLength() {
+
+        ArrayRepository repository = ArrayRepository.getInstance();
+        List<ArrayEntity> actual = repository.sortById(new ArrayComparatorLength());
+
+        ArrayEntity firstArray = new ArrayEntity(1, 3, 4, 5, 6);
+        ArrayEntity secondArray = new ArrayEntity(8, 9, 4, 7, 1);
+        ArrayEntity thirdArray = new ArrayEntity(0, 2, -4, 3, 4, 3);
+        ArrayEntity fourthArray = new ArrayEntity(3, 5, 9);
+        ArrayEntity fifthArray = new ArrayEntity(7, 1, 1, 1, 3);
+
+        List<ArrayEntity> expected = List.of(fourthArray, firstArray, secondArray, fifthArray, thirdArray);
+
+        assertEquals(actual, expected);
+    }
 
 }
