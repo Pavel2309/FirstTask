@@ -29,19 +29,21 @@ public class WarehouseEntity {
 
     public void putStatistics(Long arrayId, ArrayStatisticEntity arrayStatistics) {
         storage.put(arrayId, arrayStatistics);
+        logger.info("statistics has been added for an array with id {}", arrayId);
     }
 
     public void putStatistics(Long arrayId, int max, int min, double average,
                               int numberOfPositiveElements, int numberOfNegativeElements) {
         ArrayStatisticEntity arrayStatistics = new ArrayStatisticEntity(max, min, average, numberOfPositiveElements, numberOfNegativeElements);
         putStatistics(arrayId, arrayStatistics);
+        logger.info("statistics has been added for an array with id {}", arrayId);
     }
 
     public void updateStatistics(Long arrayId, ArrayStatisticEntity arrayStatistics) {
         if (storage.containsKey(arrayId)) {
             storage.replace(arrayId, arrayStatistics);
         } else {
-            //todo process exception
+            logger.error("can't find statistics for array with id {}", arrayId);
         }
     }
 
@@ -52,7 +54,7 @@ public class WarehouseEntity {
             storage.replace(arrayId, new ArrayStatisticEntity(max, min, average,
                     numberOfPositiveElements, numberOfNegativeElements));
         } else {
-            //todo process exception
+            logger.error("can't find statistics for an array with id {}", arrayId);
         }
 
     }

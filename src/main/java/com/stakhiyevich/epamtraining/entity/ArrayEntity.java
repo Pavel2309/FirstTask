@@ -84,7 +84,7 @@ public class ArrayEntity extends AbstractArrayEntity implements Observable {
         }
 
         for (ArrayObserver observer : observers) {
-            observer.changeElement(this);
+            observer.elementChanged(this);
         }
     }
 }

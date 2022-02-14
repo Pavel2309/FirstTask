@@ -10,7 +10,7 @@ import com.stakhiyevich.epamtraining.service.impl.ArrayServiceImpl;
 public class ArrayObserverImpl implements ArrayObserver {
 
     @Override
-    public void changeElement(ArrayEntity arrayEntity) {
+    public void elementChanged(ArrayEntity arrayEntity) {
 
         ArrayService arrayService = new ArrayServiceImpl();
 
