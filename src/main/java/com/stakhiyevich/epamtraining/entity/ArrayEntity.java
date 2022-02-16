@@ -1,18 +1,13 @@
 package com.stakhiyevich.epamtraining.entity;
 
 import com.stakhiyevich.epamtraining.exception.ArrayException;
-import com.stakhiyevich.epamtraining.observer.ArrayObserver;
 import com.stakhiyevich.epamtraining.observer.Observable;
 
 import java.util.Arrays;
-import java.util.Set;
 
 public class ArrayEntity extends AbstractArrayEntity implements Observable {
 
     private final int[] array;
-
-    //ask about this
-    private final Set<ArrayObserver> observers = getObservers();
 
     public ArrayEntity(int... array) {
         this.array = array.clone();
@@ -64,27 +59,4 @@ public class ArrayEntity extends AbstractArrayEntity implements Observable {
     }
 
 
-    @Override
-    public void attach(ArrayObserver observer) {
-        if (observer != null) {
-            observers.add(observer);
-        }
-    }
-
-    @Override
-    public void detach(ArrayObserver observer) {
-        observers.remove(observer);
-    }
-
-    @Override
-    public void notifyObservers() {
-
-        if (observers.isEmpty()) {
-            return;
-        }
-
-        for (ArrayObserver observer : observers) {
-            observer.elementChanged(this);
-        }
-    }
 }

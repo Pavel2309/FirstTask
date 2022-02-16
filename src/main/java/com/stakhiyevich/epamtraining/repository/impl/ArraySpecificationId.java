@@ -5,7 +5,7 @@ import com.stakhiyevich.epamtraining.repository.ArraySpecification;
 
 public class ArraySpecificationId implements ArraySpecification {
 
-    private int id;
+    private final int id;
 
     public ArraySpecificationId(int id) {
         this.id = id;

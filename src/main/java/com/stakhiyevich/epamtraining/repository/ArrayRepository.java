@@ -41,8 +41,8 @@ public class ArrayRepository {
                 .toList();
     }
 
-    public boolean add(ArrayEntity arrayEntity) {
-        return arrayEntityList.add(arrayEntity);
+    public void add(ArrayEntity arrayEntity) {
+        arrayEntityList.add(arrayEntity);
     }
 
     public void add(int index, ArrayEntity arrayEntity) {

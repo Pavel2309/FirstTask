@@ -21,13 +21,6 @@ public class ArrayIntStreamServiceImplTest {
         int expected = 1;
         int actual = arrayIntStreamService.findMinElement(array).getAsInt();
 
-//        // ask about this approach
-//        if (arrayIntStreamService.getMinElement(array).isPresent()) {
-//            actual = arrayIntStreamService.getMinElement(array).getAsInt();
-//        } else {
-//            fail();
-//        }
-
         Assert.assertEquals(expected, actual);
     }
 

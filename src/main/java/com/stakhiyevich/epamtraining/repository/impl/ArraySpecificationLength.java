@@ -5,7 +5,7 @@ import com.stakhiyevich.epamtraining.repository.ArraySpecification;
 
 public class ArraySpecificationLength implements ArraySpecification {
 
-    private int numberOfElements;
+    private final int numberOfElements;
 
     public ArraySpecificationLength(int numberOfElements) {
         this.numberOfElements = numberOfElements;

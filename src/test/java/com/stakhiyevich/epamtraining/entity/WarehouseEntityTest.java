@@ -1,6 +1,5 @@
 package com.stakhiyevich.epamtraining.entity;
 
-import com.stakhiyevich.epamtraining.repository.ArraySpecification;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

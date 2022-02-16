@@ -7,7 +7,7 @@ import com.stakhiyevich.epamtraining.service.impl.ArrayServiceImpl;
 
 public class ArraySpecificationGreaterSum implements ArraySpecification {
 
-    private int sumThreshold;
+    private final int sumThreshold;
 
     public ArraySpecificationGreaterSum(int sumThreshold){
         this.sumThreshold = sumThreshold;

@@ -1,0 +1,43 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestAll">
+
+    <test name="warehouse">
+        <classes>
+            <class name="com.stakhiyevich.epamtraining.entity.WarehouseEntityTest" />
+        </classes>
+    </test>
+
+    <test name="observer">
+        <classes>
+            <class name="com.stakhiyevich.epamtraining.observer.impl.ArrayObserverImplTest" />
+        </classes>
+    </test>
+
+    <test name="parser">
+        <classes>
+            <class name="com.stakhiyevich.epamtraining.parser.impl.ArrayParserImplTest" />
+        </classes>
+    </test>
+
+    <test name="reader">
+        <classes>
+            <class name="com.stakhiyevich.epamtraining.reader.impl.ArrayReaderImplTest" />
+        </classes>
+    </test>
+
+    <test name="repository">
+        <classes>
+            <class name="com.stakhiyevich.epamtraining.repository.ArrayRepositoryTest" />
+        </classes>
+    </test>
+
+    <test name="service">
+        <classes>
+            <class name="com.stakhiyevich.epamtraining.service.impl.ArrayIntStreamServiceImplTest" />
+            <class name="com.stakhiyevich.epamtraining.service.impl.ArrayServiceImplTest" />
+            <class name="com.stakhiyevich.epamtraining.service.impl.ArraySortServiceImplTest" />
+        </classes>
+    </test>
+
+</suite>

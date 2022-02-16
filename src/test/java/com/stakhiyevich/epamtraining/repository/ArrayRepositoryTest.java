@@ -6,6 +6,7 @@ import com.stakhiyevich.epamtraining.entity.comparator.ArrayComparatorLength;
 import com.stakhiyevich.epamtraining.repository.impl.ArraySpecificationGreaterSum;
 import com.stakhiyevich.epamtraining.repository.impl.ArraySpecificationId;
 import com.stakhiyevich.epamtraining.repository.impl.ArraySpecificationLength;
+import com.stakhiyevich.epamtraining.util.IdGenerator;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -18,6 +19,7 @@ public class ArrayRepositoryTest {
     @BeforeClass
     public void setUp() {
 
+        IdGenerator.resetId();
         ArrayEntity firstArray = new ArrayEntity(1, 3, 4, 5, 6);
         ArrayEntity secondArray = new ArrayEntity(8, 9, 4, 7, 1);
         ArrayEntity thirdArray = new ArrayEntity(0, 2, -4, 3, 4, 3);
@@ -25,6 +27,7 @@ public class ArrayRepositoryTest {
         ArrayEntity fifthArray = new ArrayEntity(7, 1, 1, 1, 3);
 
         ArrayRepository repository = ArrayRepository.getInstance();
+
         repository.add(firstArray);
         repository.add(secondArray);
         repository.add(thirdArray);
@@ -38,7 +41,7 @@ public class ArrayRepositoryTest {
 
         ArraySpecification specification = new ArraySpecificationId(1);
         ArrayRepository repository = ArrayRepository.getInstance();
-
+        List<ArrayEntity> test = repository.getAll();
         List<ArrayEntity> arrayEntities = repository.basicQuery(specification);
 
         int actual = arrayEntities.size();
