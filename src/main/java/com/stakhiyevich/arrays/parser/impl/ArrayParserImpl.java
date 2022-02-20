@@ -1,10 +1,10 @@
-package com.stakhiyevich.epamtraining.parser.impl;
+package com.stakhiyevich.arrays.parser.impl;
 
-import com.stakhiyevich.epamtraining.entity.ArrayEntity;
-import com.stakhiyevich.epamtraining.exception.ArrayException;
-import com.stakhiyevich.epamtraining.exception.ParseException;
-import com.stakhiyevich.epamtraining.factory.ArrayFactory;
-import com.stakhiyevich.epamtraining.parser.ArrayParser;
+import com.stakhiyevich.arrays.entity.ArrayEntity;
+import com.stakhiyevich.arrays.exception.ArrayException;
+import com.stakhiyevich.arrays.exception.ParseException;
+import com.stakhiyevich.arrays.factory.ArrayFactory;
+import com.stakhiyevich.arrays.parser.ArrayParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,9 +19,7 @@ public class ArrayParserImpl implements ArrayParser {
 
         logger.info("trying to parse the \"{}\" string", value);
 
-        String[] splintedString = value
-                .replaceAll(SPACE_DUPLICATES, SPACE_SPLITTER)
-                .split(SPACE_SPLITTER);
+        String[] splintedString = value.replaceAll(SPACE_DUPLICATES, SPACE_SPLITTER).split(SPACE_SPLITTER);
 
         ArrayEntity arrayEntity = ArrayFactory.createArray(splintedString.length);
 
@@ -30,10 +28,10 @@ public class ArrayParserImpl implements ArrayParser {
                 arrayEntity.setElement(i, Integer.parseInt(splintedString[i]));
             } catch (ArrayException e) {
                 logger.error("index is out of bounds", e);
-                throw new  ParseException("can't parse file");
+                throw new ParseException("can't parse file");
             } catch (NumberFormatException e) {
-                logger.error("illegal character or out of integer's min max value", e);
-                throw new  ParseException("can't parse file");
+                logger.error("illegal character", e);
+                throw new ParseException("can't parse file");
             }
         }
 
